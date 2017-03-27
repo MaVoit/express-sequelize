@@ -1,0 +1,83 @@
+{
+    "env": {
+        "node": true
+        //"mocha": true,
+    },
+    "parser": "babel-eslint",
+    "extends": "airbnb-base",
+    "globals": {
+        "should": false
+    },
+    "plugins": [
+        "babel",
+        "mocha"
+    ],
+    "settings": {
+        "import/resolver": {
+            "babel-module": {}
+        }
+    },
+    "rules": {
+        "no-console": 2,
+        "no-else-return": 0,
+        "no-extra-boolean-cast": 2,
+        "no-label-var": 2,
+        "no-loop-func": 0,
+        "no-multiple-empty-lines": [ 2, { "max": 2 } ],
+        "no-param-reassign": 0,
+        "no-path-concat": 2,
+        "no-shadow": [ 0, { "hoist": "never" } ],
+        "no-unused-expressions": 0,
+        "no-unused-vars": [ 2, { "vars": "all", "args": "none" } ],
+        "no-use-before-define": 0,
+        "array-bracket-spacing": [ 0, "never" ],
+        "arrow-parens": 0,
+        "babel/arrow-parens": 2,
+        "comma-dangle": [ 2, "never" ],
+        "consistent-return": 0,
+        "eol-last": 2,
+        "eqeqeq": [ 2, "smart" ],
+        "func-names": 0,
+        "guard-for-in": 0,
+        "indent": [ 2, 4, { "MemberExpression": 0 } ],
+        "key-spacing": [ 1, { "beforeColon": false, "afterColon": true, "mode": "strict" } ],
+        "max-depth": [ 2, 3 ],
+        "max-statements": [ 2, 30 ],
+        "new-cap": 0,
+        "object-curly-spacing": 2,
+        "object-shorthand": [ 2, "properties" ],
+        "one-var": 0,
+        "padded-blocks": 0,
+        "prefer-const": 0,
+        "quotes": [ 2, "double", "avoid-escape" ],
+        "space-before-function-paren": [ 2, { "anonymous": "always", "named": "never" } ],
+        "space-infix-ops": [ 2, { "int32Hint": false } ],
+        "spaced-comment": 0,
+        "vars-on-top": 0,
+        "max-len": 0,
+        "quote-props": 0,
+        "prefer-arrow-callback": 0,
+        "arrow-body-style": 0,
+        "one-var-declaration-per-line": 0,
+        "no-useless-constructor": 0,
+        "prefer-template": 0,
+        "template-curly-spacing": 0,
+        "prefer-rest-params": 0,
+        "no-return-assign": 0,
+        "wrap-iife": 0,
+        "no-confusing-arrow": 0,
+        "no-unneeded-ternary": 0,
+        "array-callback-return": 0,
+        "no-prototype-builtins": 1,
+        "no-mixed-operators": 0,
+        "no-underscore-dangle": 0,
+        "import/no-unresolved": 0,
+        "import/no-extraneous-dependencies": 0,
+        "import/imports-first": 0,
+        "import/newline-after-import": 0,
+        "import/extensions": 0,
+        "mocha/no-exclusive-tests": "error",
+        "class-methods-use-this": 0,
+        "no-useless-escape": 0
+    }
+}
