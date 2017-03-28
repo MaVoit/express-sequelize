@@ -1,10 +1,12 @@
 import "babel-polyfill";    // required for async/await
 import express from "express";
 import bodyParser from "body-parser";
-import logger from "morgan";
+import morgan from "morgan";
 import http from "http";
+import compression from "compression";
 import routes from "./routes/index";
 import modelsFactory from "./models/index";
+import { apiErrorHandler, apiErrorLogger } from "./utils/ExpressHelper";
 
 
 const initModels = (req, res, next) => {
@@ -23,13 +25,14 @@ const startServer = (options) => {
 
 // Set up the express app
 const app = express();
-app.use(logger("dev"));
+app.use(compression());
+app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(initModels);
-
-// load defined routes
 routes(app);
+app.use(apiErrorLogger);
+app.use(apiErrorHandler);
 
 // start listening
 startServer();

@@ -1,4 +1,5 @@
 import { catchAsyncErrors } from "../utils/ExpressHelper";
+import Defaults from "../defaults";
 
 const create = catchAsyncErrors(async(req, res, next) => {
 
@@ -6,17 +7,14 @@ const create = catchAsyncErrors(async(req, res, next) => {
         title: req.body.title || "test"
     };
 
-    return res.locals.data.models.item
-    .create(data)
-    .then(created => res.status(201).send(created))
-    .catch(error => res.status(400).send(error));
+    const created = await res.locals.data.models.item.create(data);
+    res.status(201).json(created);
 });
 
-const list = catchAsyncErrors(async(req, res) => {
-    return res.locals.data.models.item
-    .list()
-    .then(items => res.status(201).send(items))
-    .catch(error => res.status(400).send(error));
+const list = catchAsyncErrors(async(req, res, next) => {
+    const limit = req.query.limit || Defaults.LIMIT;
+    const items = await res.locals.data.models.item.list(limit);
+    res.status(201).json(items);
 });
 
 

@@ -16,7 +16,10 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "1.17.1",
+    "compression": "1.6.2",
     "express": "4.15.2",
+    "http-status-codes": "1.1.6",
+    "lodash": "4.17.4",
     "morgan": "1.8.1",
     "pg": "6.1.5",
     "pg-hstore": "2.3.2",

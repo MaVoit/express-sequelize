@@ -9,8 +9,8 @@ export default (connector) => {
         });
     };
 
-    const list = () => {
-        return connector.list();
+    const list = (limit) => {
+        return connector.list(limit);
     };
 
     return {
