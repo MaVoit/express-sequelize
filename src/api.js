@@ -1,9 +1,11 @@
+import "babel-polyfill";    // required for async/await
 import express from "express";
 import bodyParser from "body-parser";
 import logger from "morgan";
 import http from "http";
 import routes from "./routes/index";
 import modelsFactory from "./models/index";
+
 
 const initModels = (req, res, next) => {
     const models = modelsFactory({});
