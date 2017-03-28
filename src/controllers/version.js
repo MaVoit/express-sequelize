@@ -1,7 +1,4 @@
-import moment from "moment";
-import { catchAsyncErrors } from "../utils/ExpressHelper";
-
-const versionBase = require("../../version.json");
+import { catchAsyncErrors } from "../utils/express";
 
 /**
  * @apiGroup Version
@@ -18,10 +15,7 @@ const versionBase = require("../../version.json");
  * @apiSuccess {String} buildtime Build time, e.g. "2016-10-13T08:46:10.771Z"
  */
 const get = catchAsyncErrors(async(req, res, next) => {
-    const uptime = Math.floor(process.uptime());
-    const boottime = moment(new Date().getTime() - uptime * 1000).utc().format();
-    const dynamic = { status: "ok", boottime, uptime };
-    const data = Object.assign(dynamic, versionBase);
+    const data = await res.locals.data.models.version.get();
     res.json(data);
 });
 

@@ -6,7 +6,7 @@ import http from "http";
 import compression from "compression";
 import routes from "./routes/index";
 import modelsFactory from "./models/index";
-import { apiErrorHandler, apiErrorLogger } from "./utils/ExpressHelper";
+import { apiErrorHandler, apiErrorLogger } from "./utils/express";
 
 
 const initModels = (req, res, next) => {

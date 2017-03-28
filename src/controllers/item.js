@@ -1,4 +1,4 @@
-import { catchAsyncErrors } from "../utils/ExpressHelper";
+import { catchAsyncErrors } from "../utils/express";
 import Defaults from "../defaults";
 
 const create = catchAsyncErrors(async(req, res, next) => {
