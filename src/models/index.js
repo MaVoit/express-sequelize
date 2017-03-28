@@ -1,4 +1,4 @@
-import db from "../db/models/index";
+import db from "../db/schemas/index";
 import itemConnector from "../connectors/item";
 import itemModel from "./item";
 

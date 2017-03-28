@@ -6,9 +6,11 @@ const Sequelize = require("sequelize");
 const basename = path.basename(module.filename);
 const env = process.env.NODE_ENV || "development";
 const config = require(`${__dirname}/../../../config/config.json`)[env];
+
+const sequelize = new Sequelize(config.db_url);
 const db = {};
 
-const getModels = () => {
+const getSchemaFiles = () => {
     return fs
     .readdirSync(__dirname)
     .filter(file =>
@@ -17,17 +19,15 @@ const getModels = () => {
     (file.slice(-3) === ".js"));
 };
 
-const sequelize = new Sequelize(config.db_url);
-
-getModels()
+getSchemaFiles()
 .forEach((file) => {
-    const model = sequelize.import(path.join(__dirname, file));
-    db[model.name] = model;
+    const schema = sequelize.import(path.join(__dirname, file));
+    db[schema.name] = schema;
 });
 
-Object.keys(db).forEach((modelName) => {
-    if (db[modelName].associate) {
-        db[modelName].associate(db);
+Object.keys(db).forEach((schemaName) => {
+    if (db[schemaName].associate) {
+        db[schemaName].associate(db);
     }
 });
 
