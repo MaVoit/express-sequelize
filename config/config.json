@@ -1,14 +1,17 @@
 {
   "development": {
     "db_url": "postgres://foo:foo@localhost:5432/foo_dev",
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "log_level": "debug"
   },
   "test": {
     "db_url": "postgres://foo:foo@localhost:5432/foo_test",
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "log_level": "info"
   },
   "production": {
     "db_url": "postgres://foo:foo@localhost:5432/foo",
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "log_level": "info"
   }
 }

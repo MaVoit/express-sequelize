@@ -1,13 +1,11 @@
-/* eslint-disable import/no-dynamic-require */
-
 import fs from "fs";
 import path from "path";
 import Sequelize from "sequelize";
+import logger from "src/utils/logger";
+import config from "src/utils/config";
 
 const basename = path.basename(module.filename);
-const env = process.env.NODE_ENV || "development";
-const config = require(`${__dirname}/../../../config/config.json`)[env];
-const sequelize = new Sequelize(config.db_url);
+const sequelize = new Sequelize(config.db_url, { logging: logger.debug });
 const db = {};
 
 const getSchemaFiles = () => {

@@ -1,10 +1,21 @@
 import winston from "winston";
+import config from "./config";
+
+winston.addColors({
+    verbose: "grey",
+    debug: "white",
+    info: "green",
+    warn: "yellow",
+    error: "red"
+});
 
 const logger = new (winston.Logger)({
-    level: "debug",
+    level: config.log_level,
     transports: [
         new (winston.transports.Console)({
-            colorize: "all"
+            colorize: "all",
+            prettyPrint: true,
+            handleExceptions: true
         })
     ]
 });

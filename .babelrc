@@ -1,4 +1,11 @@
 {
     "presets": ["stage-1", "es2015"],
-    "plugins": ["babel-polyfill"]
+    "plugins": [
+        ["module-resolver", {
+            "alias": {
+                "src": "./src"
+            }
+        }],
+        "babel-polyfill"
+    ]
 }

@@ -1,5 +1,5 @@
 import uuid from "uuid";
-import logger from "../utils/logger";
+import logger from "src/utils/logger";
 
 export default (connector) => {
 
@@ -12,6 +12,7 @@ export default (connector) => {
     };
 
     const list = (limit) => {
+        logger.debug("Getting items with limit:", limit);
         return connector.list(limit);
     };
 

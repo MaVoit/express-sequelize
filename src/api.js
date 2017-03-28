@@ -4,9 +4,10 @@ import bodyParser from "body-parser";
 import morgan from "morgan";
 import http from "http";
 import compression from "compression";
-import routes from "./routes/index";
-import modelsFactory from "./models/index";
-import { apiErrorHandler, apiErrorLogger } from "./utils/express";
+import logger from "src/utils/logger";
+import routes from "src/routes/index";
+import modelsFactory from "src/models/index";
+import { apiErrorHandler, apiErrorLogger } from "src/utils/express";
 
 
 const initModels = (req, res, next) => {
@@ -26,7 +27,7 @@ const startServer = (options) => {
 // Set up the express app
 const app = express();
 app.use(compression());
-app.use(morgan("dev"));
+app.use(morgan("dev", { stream: { write: message => logger.info(message.trim()) } }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(initModels);

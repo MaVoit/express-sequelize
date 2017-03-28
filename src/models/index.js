@@ -1,5 +1,5 @@
-import db from "../db/schemas/index";
-import itemConnector from "../connectors/item";
+import db from "src/db/schemas/index";
+import itemConnector from "src/connectors/item";
 import itemModel from "./item";
 import versionModel from "./version";
 

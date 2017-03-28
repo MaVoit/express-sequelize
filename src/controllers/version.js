@@ -1,4 +1,4 @@
-import { catchAsyncErrors } from "../utils/express";
+import { catchAsyncErrors } from "src/utils/express";
 
 /**
  * @apiGroup Version

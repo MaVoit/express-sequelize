@@ -1,5 +1,5 @@
-import item from "../controllers/item";
-import version from "../controllers/version";
+import item from "src/controllers/item";
+import version from "src/controllers/version";
 
 export default (app) => {
 

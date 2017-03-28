@@ -1,6 +1,7 @@
 import HttpStatus from "http-status-codes";
 import { omit } from "lodash/object";
-import Constants from "../constants";
+import { Constants } from "src/constants";
+import logger from "./logger";
 
 /**
  * Can be used for wrapping async/await route handlers
@@ -40,7 +41,7 @@ export const apiErrorLogger = (err, req, res, next) => {
     const stack = err.stack;
     const error = omit(err, ["stack"]);
     const path = `${req.method} ${req.path}`;
-    console.log("ERROR", path, error);
-    console.log("STACK", stack);
+    logger.error(error, path);
+    logger.error(stack);
     next(err);
 };
