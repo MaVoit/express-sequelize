@@ -6,19 +6,22 @@
   "main": "src/api.js",
   "license": "UNLICENSED",
   "scripts": {
-    "build": "babel src --out-dir build",
+    "build": "babel src --out-dir build && npm run generate:version && npm run generate:config",
     "dev": "babel-watch ./src/api.js",
     "prod": "nodemon ./build/api.js",
-    "start": "npm run build && npm run generate-version && npm run prod",
+    "start": "npm run build && npm run prod",
     "eslint": "eslint src tests",
-    "generate-version": "node ./scripts/generateVersion.js >./version.json",
-    "sequelize": "sequelize",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "generate:version": "node ./scripts/generateVersion.js >./version.json",
+    "generate:config": "node ./scripts/generateConfigJson.js >./build/config.json",
+    "migrate": "npm run build && node_modules/.bin/sequelize db:migrate",
+    "migrate:undo": "npm run build && node_modules/.bin/sequelize db:migrate:undo",
+    "test": "NODE_ENV=test echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "babel-plugin-module-resolver": "2.5.0",
     "body-parser": "1.17.1",
     "compression": "1.6.2",
+    "dotenv-safe": "4.0.3",
     "express": "4.15.2",
     "http-status-codes": "1.1.6",
     "lodash": "4.17.4",

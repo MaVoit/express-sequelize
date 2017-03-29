@@ -10,7 +10,7 @@ winston.addColors({
 });
 
 const logger = new (winston.Logger)({
-    level: config.log_level,
+    level: config.LOG_LEVEL,
     transports: [
         new (winston.transports.Console)({
             colorize: "all",

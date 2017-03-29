@@ -5,8 +5,10 @@ import logger from "src/utils/logger";
 import config from "src/utils/config";
 
 const basename = path.basename(module.filename);
-const sequelize = new Sequelize(config.db_url, { logging: logger.debug });
+const sequelize = new Sequelize(config.DATABASE_URL, { logging: logger.debug });
 const db = {};
+
+logger.info("Using database url:", config.DATABASE_URL);
 
 const getSchemaFiles = () => {
     return fs
