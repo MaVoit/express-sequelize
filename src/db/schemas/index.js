@@ -10,6 +10,7 @@ const basename = path.basename(module.filename);
 const sequelize = new Sequelize(config.DATABASE_URL, { logging: logger.debug });
 const db = {};
 
+logger.info("Using database url:", config.DATABASE_URL);
 
 const getSchemaFiles = () => {
     return fs
