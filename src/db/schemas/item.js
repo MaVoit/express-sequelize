@@ -29,7 +29,7 @@ export default (sequelize, DataTypes) => {
 
     // FIXME remove this when schema is stable
     // TODO Use migration for schema migration instead
-    Item.sync({ force: true, match: "foo_dev" });
+    // Item.sync({ force: true, match: "foo_dev" });
 
     return Item;
 };

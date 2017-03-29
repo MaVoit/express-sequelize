@@ -1,6 +1,8 @@
-/* eslint-disable import/no-dynamic-require */
+import dotenv from "dotenv-safe";
 
-const env = process.env.NODE_ENV || "development";
-const config = require(`${__dirname}/../../config/config.json`)[env];
+const config = {};
+Object.keys(dotenv.config().required).forEach((key) => {
+    config[key] = process.env[key];
+});
 
 export default config;
