@@ -1,3 +1,4 @@
+require("babel-core/register");
 const db = require("../schemas/index");
 
 module.exports = {

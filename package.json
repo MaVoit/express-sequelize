@@ -8,13 +8,12 @@
   "scripts": {
     "build": "babel src --out-dir build && npm run generate:version && npm run generate:config",
     "dev": "babel-watch ./src/api.js",
-    "prod": "nodemon ./build/api.js",
-    "start": "npm run build && npm run prod",
+    "start": "npm run build && ./scripts/runApi.sh",
     "eslint": "eslint src tests",
     "generate:version": "node ./scripts/generateVersion.js >./version.json",
     "generate:config": "node ./scripts/generateConfigJson.js >./build/config.json",
-    "migrate": "npm run build && node_modules/.bin/sequelize db:migrate",
-    "migrate:undo": "npm run build && node_modules/.bin/sequelize db:migrate:undo",
+    "migrate": "babel-node ./scripts/runSequelize.js db:migrate",
+    "migrate:undo": "babel-node ./scripts/runSequelize.js db:migrate:undo",
     "test": "NODE_ENV=test echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
